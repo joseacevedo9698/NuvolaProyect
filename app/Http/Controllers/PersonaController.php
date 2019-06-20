@@ -121,7 +121,7 @@ class PersonaController extends Controller
             $rules = [
                 'nombre' => 'required|string|min:3|max:60',
                 'apellido' => 'required|string|min:3|max:60',
-                'telefono' => 'required|Numeric|min:10',
+                'telefono' => 'required|numeric|min:10',
                 'email' => 'required|email|unique:personas',
                 'direccion' => 'required|string|min:4|max:60',
             ];
@@ -129,7 +129,7 @@ class PersonaController extends Controller
             $rules = [
                 'nombre' => 'required|string|min:3|max:60',
                 'apellido' => 'required|string|min:3|max:60',
-                'telefono' => 'required|Numeric|min:10',
+                'telefono' => 'required|numeric|min:10',
                 'email' => 'required|email',
                 'direccion' => 'required|string|min:4|max:60',
             ];
