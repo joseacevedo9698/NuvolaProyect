@@ -1,0 +1,330 @@
+{
+	"info": {
+		"_postman_id": "3e9cf8e6-4fe5-48f0-af33-f1d0c0f49729",
+		"name": "PruebaProyecto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CrearPersona",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://3.219.209.112/api/persona?nombre=jose&apellido=acevedo&email=jacevedoc.inca@gmail.com&direccion=calle 57&telefono=30237884",
+					"protocol": "http",
+					"host": [
+						"3",
+						"219",
+						"209",
+						"112"
+					],
+					"path": [
+						"api",
+						"persona"
+					],
+					"query": [
+						{
+							"key": "nombre",
+							"value": "jose"
+						},
+						{
+							"key": "apellido",
+							"value": "acevedo"
+						},
+						{
+							"key": "email",
+							"value": "jacevedoc.inca@gmail.com"
+						},
+						{
+							"key": "direccion",
+							"value": "calle 57"
+						},
+						{
+							"key": "telefono",
+							"value": "30237884"
+						}
+					]
+				},
+				"description": "Creacion de persona, metodo post:\n\t'nombre'\n\t'apellido'\n\t'fecha' =>\n\t'telefono'\n\t'email'\n\t'direccion' "
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarPersona",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://3.219.209.112/api/persona/1?nombre=jose&apellido=camacho&email=jose.acevedo.inca@gmail.com&direccion=calle 57&telefono=30237884",
+					"protocol": "http",
+					"host": [
+						"3",
+						"219",
+						"209",
+						"112"
+					],
+					"path": [
+						"api",
+						"persona",
+						"1"
+					],
+					"query": [
+						{
+							"key": "nombre",
+							"value": "jose"
+						},
+						{
+							"key": "apellido",
+							"value": "camacho"
+						},
+						{
+							"key": "email",
+							"value": "jose.acevedo.inca@gmail.com"
+						},
+						{
+							"key": "direccion",
+							"value": "calle 57"
+						},
+						{
+							"key": "telefono",
+							"value": "30237884"
+						}
+					]
+				},
+				"description": "Actualizacion de persona, metodo post:\n\t'nombre'\n\t'apellido'\n\t'fecha'\n\t'telefono'\n\t'email'\n\t'direccion' \n\t'id'\n\t"
+			},
+			"response": []
+		},
+		{
+			"name": "ListarPersonas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://3.219.209.112/api/persona",
+					"protocol": "http",
+					"host": [
+						"3",
+						"219",
+						"209",
+						"112"
+					],
+					"path": [
+						"api",
+						"persona"
+					]
+				},
+				"description": "Muestra la lista de personas de manera paginada"
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar persona",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://3.219.209.112/api/persona/5",
+					"protocol": "http",
+					"host": [
+						"3",
+						"219",
+						"209",
+						"112"
+					],
+					"path": [
+						"api",
+						"persona",
+						"5"
+					]
+				},
+				"description": "Muestra una persona especifica por medio de su id"
+			},
+			"response": []
+		},
+		{
+			"name": "DeletePersona",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://3.219.209.112/api/persona/1",
+					"protocol": "http",
+					"host": [
+						"3",
+						"219",
+						"209",
+						"112"
+					],
+					"path": [
+						"api",
+						"persona",
+						"1"
+					]
+				},
+				"description": "Eliminar persona por metodo DELETE por medio de la identificación"
+			},
+			"response": []
+		},
+		{
+			"name": "Filtrar por nombre",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://3.219.209.112/api/persona/searchBy/nombres/?value=orti",
+					"protocol": "http",
+					"host": [
+						"3",
+						"219",
+						"209",
+						"112"
+					],
+					"path": [
+						"api",
+						"persona",
+						"searchBy",
+						"nombres",
+						""
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "orti"
+						}
+					]
+				},
+				"description": "Petición GET Para obtener los registros que coincidan con algun valor en especifico"
+			},
+			"response": []
+		},
+		{
+			"name": "Filtrar por email",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://3.219.209.112/api/persona/searchBy/email/?value= @gmail",
+					"protocol": "http",
+					"host": [
+						"3",
+						"219",
+						"209",
+						"112"
+					],
+					"path": [
+						"api",
+						"persona",
+						"searchBy",
+						"email",
+						""
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": " @gmail"
+						}
+					]
+				},
+				"description": "Petición GET Para obtener los registros que coincidan con algun valor en especifico"
+			},
+			"response": []
+		},
+		{
+			"name": "Filtrar por fecha de creación",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://3.219.209.112/api/persona/searchBy/created/?fecha=18/06/2019",
+					"protocol": "http",
+					"host": [
+						"3",
+						"219",
+						"209",
+						"112"
+					],
+					"path": [
+						"api",
+						"persona",
+						"searchBy",
+						"created",
+						""
+					],
+					"query": [
+						{
+							"key": "fecha",
+							"value": "18/06/2019"
+						}
+					]
+				},
+				"description": "Petición GET Para obtener los registros que coincidan con algun valor en especifico"
+			},
+			"response": []
+		},
+		{
+			"name": "RegisterVuelo Post XML",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\"?>\n<Persona>\n  <Vuelo>\n      <fecha_viaje>06/09/2019</fecha_viaje>\n      <pais>Colombia</pais>\n      <ciudad>Barranquilla</ciudad>\n      <email>amoen@example.net</email>\n  </Vuelo>\n  <Vuelo>\n      <fecha_viaje>06/09/2019</fecha_viaje>\n      <pais>Colombia</pais>\n      <ciudad>Barranquilla</ciudad>\n      <email>amoen@example.net</email>\n  </Vuelo>\n  <Vuelo>\n      <fecha_viaje>06/09/2019</fecha_viaje>\n      <pais>Colombia</pais>\n      <ciudad>Barranquilla</ciudad>\n      <email>amoen@example.net</email>\n  </Vuelo>\n</Persona>"
+				},
+				"url": {
+					"raw": "http://3.219.209.112/api/vuelo",
+					"protocol": "http",
+					"host": [
+						"3",
+						"219",
+						"209",
+						"112"
+					],
+					"path": [
+						"api",
+						"vuelo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar vuelos por persona",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://3.219.209.112/api/vuelo/listar?email=amoen@example.net",
+					"protocol": "http",
+					"host": [
+						"3",
+						"219",
+						"209",
+						"112"
+					],
+					"path": [
+						"api",
+						"vuelo",
+						"listar"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "amoen@example.net"
+						}
+					]
+				},
+				"description": "Petición que devuelve la lista de vuelos de una persona, siendo esta buscada por su email"
+			},
+			"response": []
+		}
+	]
+}
