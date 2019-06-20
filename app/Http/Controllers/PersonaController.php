@@ -74,11 +74,19 @@ class PersonaController extends Controller
                 $persona->telefono = $request->input('telefono');
                 $persona->email = $request->input('email');
                 $persona->direccion = $request->input('direccion');
-                if ($persona->save()) {
-                    return response()->json(['status' => '200', 'description' => 'Update Success'], 200);
-                } else {
-                    return response()->json(['status' => '500', 'description' => 'Update Not Succcess'], 500);
+                try {
+                    if ($persona->save()) {
+                        return response()->json(['status' => '200', 'description' => 'Update Success'], 200);
+                    } else {
+                        return response()->json(['status' => '500', 'description' => 'Update Not Succcess'], 500);
+                    }
+                } catch (Illuminate\Database\QueryException $e) {
+                    return response()->json(['status' => '500', 'description' => 'Duplicate Data'], 500);
+
+                } catch (PDOException $e) {
+                    return response()->json(['status' => '500', 'description' => 'Duplicate Data'], 500);
                 }
+
             }
         } else {
             return response()->json(['status' => '404', 'description' => 'Persona Not Found'], 404);
