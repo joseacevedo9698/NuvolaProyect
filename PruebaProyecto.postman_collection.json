@@ -173,7 +173,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://3.219.209.112/api/persona/searchBy/nombres/?value=orti",
+					"raw": "http://3.219.209.112/api/persona/searchBy/nombres/?value=jose",
 					"protocol": "http",
 					"host": [
 						"3",
@@ -191,7 +191,7 @@
 					"query": [
 						{
 							"key": "value",
-							"value": "orti"
+							"value": "jose"
 						}
 					]
 				},
@@ -237,7 +237,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://3.219.209.112/api/persona/searchBy/created/?fecha=18/06/2019",
+					"raw": "http://3.219.209.112/api/persona/searchBy/created/?fecha=16/06/2019",
 					"protocol": "http",
 					"host": [
 						"3",
@@ -255,7 +255,7 @@
 					"query": [
 						{
 							"key": "fecha",
-							"value": "18/06/2019"
+							"value": "16/06/2019"
 						}
 					]
 				},
@@ -277,7 +277,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "<?xml version=\"1.0\"?>\n<Persona>\n  <Vuelo>\n      <fecha_viaje>06/09/2019</fecha_viaje>\n      <pais>Colombia</pais>\n      <ciudad>Barranquilla</ciudad>\n      <email>amoen@example.net</email>\n  </Vuelo>\n  <Vuelo>\n      <fecha_viaje>06/09/2019</fecha_viaje>\n      <pais>Colombia</pais>\n      <ciudad>Barranquilla</ciudad>\n      <email>amoen@example.net</email>\n  </Vuelo>\n  <Vuelo>\n      <fecha_viaje>06/09/2019</fecha_viaje>\n      <pais>Colombia</pais>\n      <ciudad>Barranquilla</ciudad>\n      <email>amoen@example.net</email>\n  </Vuelo>\n</Persona>"
+					"raw": "<?xml version=\"1.0\"?>\n<Persona>\n  <Vuelo>\n      <fecha_viaje>06/09/2019</fecha_viaje>\n      <pais>Colombia</pais>\n      <ciudad>Bucaramanga</ciudad>\n      <email>jacevedoc.inca@gmail.com</email>\n  </Vuelo>\n  <Vuelo>\n      <fecha_viaje>06/09/2019</fecha_viaje>\n      <pais>Colombia</pais>\n      <ciudad>Bogota</ciudad>\n      <email>jacevedoc.inca@gmail.com</email>\n  </Vuelo>\n  <Vuelo>\n      <fecha_viaje>06/09/2019</fecha_viaje>\n      <pais>Colombia</pais>\n      <ciudad>Barranquilla</ciudad>\n      <email>jacevedoc.inca@gmail.com</email>\n  </Vuelo>\n</Persona>"
 				},
 				"url": {
 					"raw": "http://3.219.209.112/api/vuelo",
@@ -302,7 +302,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://3.219.209.112/api/vuelo/listar?email=amoen@example.net",
+					"raw": "http://3.219.209.112/api/vuelo/listar?email=jacevedoc.inca@gmail.com",
 					"protocol": "http",
 					"host": [
 						"3",
@@ -318,11 +318,34 @@
 					"query": [
 						{
 							"key": "email",
-							"value": "amoen@example.net"
+							"value": "jacevedoc.inca@gmail.com"
 						}
 					]
 				},
 				"description": "Petición que devuelve la lista de vuelos de una persona, siendo esta buscada por su email"
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todos los vuelos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://3.219.209.112/api/vuelo/",
+					"protocol": "http",
+					"host": [
+						"3",
+						"219",
+						"209",
+						"112"
+					],
+					"path": [
+						"api",
+						"vuelo",
+						""
+					]
+				}
 			},
 			"response": []
 		}
