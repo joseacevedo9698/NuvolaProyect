@@ -6,7 +6,7 @@ use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-
+use Symfony\Component\HttpKernel\Exception\QueryException;
 class Handler extends ExceptionHandler
 {
     /**
@@ -58,6 +58,13 @@ class Handler extends ExceptionHandler
             return response()->json([
                 'Error' => '404',
                 'Descripcion' =>'Petition Not Found'
+            ]);
+        }
+
+        if ($exception instanceof QueryException ) {
+            return response()->json([
+                'Error' => '402',
+                'Descripcion' =>'Duplicate Data'
             ]);
         }
         return parent::render($request, $exception);
