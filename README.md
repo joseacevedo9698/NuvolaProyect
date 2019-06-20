@@ -53,7 +53,7 @@ Problema Propuesto Por la empresa Nuvola
         </ul>
         <h5>Metodo: </h5><i> GET </i>
         <br>
-        Filtrar Persona por fecha de creacion: 'http://**/api/persona/searchBy/created'
+        Filtrar Persona por rango de fecha de creacion con respecto a a la actual: 'http://**/api/persona/searchBy/created'
         <h5>Parametros</h5>
         <ul>
             <li>fecha</li>
