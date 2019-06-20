@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Exception;
 use Validator;
 use App\Persona;
 use Illuminate\Http\Request;
@@ -69,22 +69,18 @@ class PersonaController extends Controller
             if ($validator->fails()) {
                 return response()->json(['errors' => $validator->errors(), 'status' => 400], 400);
             } else {
+
+                try {
                 $persona->nombre = $request->input('nombre');
                 $persona->apellido = $request->input('apellido');
                 $persona->telefono = $request->input('telefono');
                 $persona->email = $request->input('email');
                 $persona->direccion = $request->input('direccion');
-                try {
-                    if ($persona->save()) {
-                        return response()->json(['status' => '200', 'description' => 'Update Success'], 200);
-                    } else {
-                        return response()->json(['status' => '500', 'description' => 'Update Not Succcess'], 500);
-                    }
-                } catch (Illuminate\Database\QueryException $e) {
+		     $persona->save();
+                      return response()->json(['status' => '200', 'description' => 'Update Success'], 200);
+                } catch (Exception $e) {
                     return response()->json(['status' => '500', 'description' => 'Duplicate Data'], 500);
 
-                } catch (PDOException $e) {
-                    return response()->json(['status' => '500', 'description' => 'Duplicate Data'], 500);
                 }
 
             }
