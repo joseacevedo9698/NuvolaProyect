@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Validator;
 use App\Persona;
 use Illuminate\Http\Request;
-use phpDocumentor\Reflection\Types\Integer;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 
 class PersonaController extends Controller
 {
@@ -17,7 +18,7 @@ class PersonaController extends Controller
     public function index()
     {
         $personas = Persona::paginate(10);
-        return response()->json($personas);
+        return response()->json($personas,200);
     }
 
     /**
@@ -96,16 +97,16 @@ class PersonaController extends Controller
         if ($persona) {
             if ($persona->delete()) {
                 return response()->json(['status' => '200', 'description' => 'Delete Success'], 200);
-            }else{
+            } else {
                 return response()->json(['status' => '500', 'description' => 'Delete Not Succcess'], 500);
             }
-        }else{
+        } else {
             return response()->json(['status' => '404', 'description' => 'Persona Not Found'], 404);
         }
     }
 
 
-    public function rulesValidate(Request $request, $resp)
+    private function rulesValidate(Request $request, $resp)
     {
 
         if ($resp === 1) {
@@ -125,8 +126,49 @@ class PersonaController extends Controller
                 'direccion' => 'required|string|min:4|max:60',
             ];
         } else {
-            response()->json(['status' => '500', 'description' => 'Error Validate'], 500);
+            return response()->json(['status' => 500, 'description' => 'Error Validate'], 500);
         }
         return Validator::make($request->all(), $rules);
+    }
+
+    public function SearchNombres(Request $request)
+    {
+        $personas = DB::table('personas')->where('nombre', 'LIKE', '%' . $request->input('value') . '%')->orWhere('apellido', 'LIKE', '%' . $request->input('value') . '%')->paginate(10);
+
+        if (!$personas->isEmpty()) {
+
+            return response()->json(['status' => 200, 'results' => $personas], 200);
+        } else {
+            return response()->json(['status' => 404, 'description' => 'Persona Not Found'], 404);
+        }
+    }
+
+    public function SearchEmail(Request $request)
+    {
+        $personas = DB::table('personas')->where('email', 'LIKE', '%' . $request->input('value') . '%')->paginate(10);
+
+        if (!$personas->isEmpty()) {
+            return response()->json(['status' => 200, 'results' => $personas], 200);
+        } else {
+            return response()->json(['status' => 404, 'description' => 'Email Not Found'], 404);
+        }
+    }
+
+
+    public function SearchCreated(Request $request)
+    {
+        $rules = [
+            'fecha' => 'required|date_format:d/m/Y'
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors(), 'status' => 400], 400);
+        } else {
+            $x = Carbon::now();
+            $fecha = str_replace('/', '-', $request->input('fecha'));
+            $y = date("Y-m-d", strtotime($fecha));
+            $personas = Persona::whereBetween('created_at', [$y, $x])->paginate(10);
+            return response()->json(['status' => 200, 'results' => $personas], 200);
+        }
     }
 }

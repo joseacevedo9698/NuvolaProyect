@@ -18,3 +18,9 @@ use Illuminate\Http\Request;
 // });
 
 Route::apiResource('persona', 'PersonaController');
+Route::apiResource('vuelo', 'VueloController');
+Route::get('persona/searchBy/nombres','PersonaController@SearchNombres');
+Route::get('persona/searchBy/email','PersonaController@SearchEmail');
+Route::get('persona/searchBy/created','PersonaController@SearchCreated');
+Route::get('vuelo/listar', 'VueloController@show');
+
