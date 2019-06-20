@@ -1,5 +1,6 @@
 NuvolaProyect
 Problema Propuesto Por la empresa Nuvola
+NOTA: Archivo de postman anexado en el proyecto 'PruebaProyecto.postman_collection.json'
 <h3>Desarrollado por Jose Acevedo </h3>
 <h5> Peticiones </h5>
  <h5>Crud de Personas:</h5><br>
